@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'Excuse Molle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom font setup */
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&display=swap');
+      
+      body {
+        font-family: 'Fredoka', sans-serif;
+        background-color: #fdf2f8; /* pink-50 */
+        overscroll-behavior: none; /* Prevent bounce on mobile */
+        touch-action: none; /* Important for custom slider dragging */
+      }
+      
+      /* Jelly Animation Keyframes */
+      @keyframes jelly {
+        0% { transform: scale(1, 1); }
+        30% { transform: scale(1.25, 0.75); }
+        40% { transform: scale(0.75, 1.25); }
+        50% { transform: scale(1.15, 0.85); }
+        65% { transform: scale(0.95, 1.05); }
+        75% { transform: scale(1.05, 0.95); }
+        100% { transform: scale(1, 1); }
+      }
+
+      .animate-jelly {
+        animation: jelly 0.6s both;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- SVG Filter for the "Gooey" effect -->
+    <!-- Optimized stdDeviation and matrix for a sharper liquid connection -->
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />    
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+  </body>
+</html>
